@@ -1,0 +1,438 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>For Noor</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@1,6..96,400;1,6..96,500&family=Hanken+Grotesk:wght@300;400;500;600&family=Mrs+Saint+Delafield&display=swap">
+<style>
+/* Layout: one long night-time letter, left-aligned like handwriting on a page, with a wilted rose beside the title that blooms when she forgives. Cold midnight while he is sorry, warm dawn after. */
+:root {
+  --night: #130f20;
+  --night-2: #261a34;
+  --ink: #f6ecf0;
+  --muted: #c4b3c3;
+  --rose: #e8657f;
+  --petal: #f4a9bb;
+  --dawn-top: #3d1432;
+  --dawn-mid: #7d2a4d;
+  --dawn-bottom: #b8486a;
+  --glow: #f7c9a8;
+  --font-display: "Bodoni Moda", "Didot", "Bodoni 72", Georgia, serif;
+  --font-body: "Hanken Grotesk", "Segoe UI", system-ui, sans-serif;
+  --font-hand: "Mrs Saint Delafield", "Segoe Script", "Brush Script MT", cursive;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body {
+  background: var(--night);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.8;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  overflow-x: clip;
+  position: relative;
+  min-height: 100vh;
+}
+.sky, .dawn, #fx { position: fixed; inset: 0; pointer-events: none; }
+.sky { background: radial-gradient(90% 60% at 85% 0%, #3a2548 0%, var(--night-2) 28%, var(--night) 70%); z-index: 0; }
+.dawn { background: linear-gradient(180deg, var(--dawn-top) 0%, var(--dawn-mid) 45%, var(--dawn-bottom) 100%); opacity: 0; transition: opacity 2.6s ease; z-index: 0; }
+.dawn::after { content: ""; position: absolute; left: 50%; bottom: -35%; width: 150%; aspect-ratio: 1; max-width: 150%; transform: translateX(-50%); background: radial-gradient(circle, rgba(247,201,168,.55) 0%, rgba(247,201,168,0) 60%); }
+body.healed .dawn { opacity: 1; }
+#fx { z-index: 1; width: 100%; height: 100%; }
+main { position: relative; z-index: 2; max-width: 52rem; margin: 0 auto; display: flex; flex-direction: column; gap: 5rem; padding-block: 3.5rem 5rem; }
+
+/* music toggle */
+.music { position: fixed; z-index: 5; top: calc(env(safe-area-inset-top, 0px) + 12px); right: max(12px, env(safe-area-inset-right, 0px)); display: inline-flex; align-items: center; gap: .55rem; padding: .5rem 1rem; font-size: .85rem; letter-spacing: .04em; background: rgba(19,15,32,.55); color: var(--muted); border: 1px solid rgba(196,179,195,.35); backdrop-filter: blur(6px); }
+.music[aria-pressed="true"] { color: var(--ink); border-color: var(--petal); }
+.music i { width: .55rem; height: .55rem; border-radius: 50%; background: currentColor; opacity: .6; }
+.music[aria-pressed="true"] i { background: var(--petal); opacity: 1; animation: pulse 2.4s ease-in-out infinite; }
+@keyframes pulse { 50% { transform: scale(1.5); opacity: .5; } }
+
+/* hero */
+.hero { display: grid; grid-template-columns: 1fr; gap: 1rem; align-items: end; }
+.hero-text { display: flex; flex-direction: column; gap: 1.25rem; min-width: 0; padding-top: 2.5rem; }
+.eyebrow { font-size: .78rem; letter-spacing: .22em; text-transform: uppercase; color: var(--muted); margin: 0; }
+h1 { font-family: var(--font-display); font-style: italic; font-weight: 400; font-size: clamp(4.5rem, 21vw, 10rem); line-height: .92; margin: 0; letter-spacing: -.02em; }
+h1 span { color: var(--petal); }
+.lede { font-family: var(--font-display); font-style: italic; font-size: clamp(1.5rem, 5.2vw, 2.2rem); line-height: 1.3; margin: 0; max-width: 28rem; text-wrap: balance; }
+.hero-text > * { animation: rise 1.4s ease both; }
+.hero-text > :nth-child(2) { animation-delay: .25s; }
+.hero-text > :nth-child(3) { animation-delay: .6s; }
+@keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+
+/* rose */
+.rose-wrap { width: min(15rem, 62vw); justify-self: start; min-width: 0; }
+.rose { width: 100%; height: auto; display: block; overflow: visible; }
+.rose .head { transform-origin: 110px 158px; transform: rotate(40deg) scale(.9); transition: transform 2.6s cubic-bezier(.3,1.3,.5,1); }
+.rose .glow { opacity: 0; transition: opacity 2.6s ease; }
+.rose .po { fill: #7f4a60; transition: fill 2.6s ease; }
+.rose .pi { fill: #62384c; transition: fill 2.6s ease; }
+.rose .pc { fill: #4a2a3b; transition: fill 2.6s ease; }
+.rose .leaf { fill: #3c5d52; transition: fill 2.6s ease; }
+.rose .stem { stroke: #3c5d52; transition: stroke 2.6s ease; }
+.rose .fallen { transition: opacity 1.6s ease; }
+body.healed .rose .head { transform: rotate(0) scale(1.08); }
+body.healed .rose .glow { opacity: .75; }
+body.healed .rose .po { fill: #e8657f; }
+body.healed .rose .pi { fill: #f27c95; }
+body.healed .rose .pc { fill: #c63f60; }
+body.healed .rose .leaf { fill: #4d9a76; }
+body.healed .rose .stem { stroke: #4d9a76; }
+body.healed .rose .fallen { opacity: 0; }
+
+/* letter */
+.letter { display: flex; flex-direction: column; gap: 1.5rem; max-width: 34rem; }
+.letter p { margin: 0; }
+.date { font-size: .8rem; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); }
+.letter .soft { color: var(--muted); }
+.pull { font-family: var(--font-display); font-style: italic; font-size: clamp(1.4rem, 4.6vw, 1.95rem); line-height: 1.4; color: var(--petal); text-wrap: balance; }
+
+/* what I miss */
+.miss { display: flex; flex-direction: column; gap: 1.5rem; max-width: 34rem; }
+.miss h2, .promises h2, .ask h2 { font-family: var(--font-display); font-style: italic; font-weight: 400; font-size: clamp(1.8rem, 6vw, 2.6rem); line-height: 1.15; margin: 0; text-wrap: balance; }
+.miss-list { display: flex; flex-direction: column; gap: 1rem; margin: 0; padding: 0; list-style: none; }
+.miss-list li { color: var(--muted); padding-bottom: 1rem; border-bottom: 1px solid rgba(196,179,195,.2); }
+.miss-list li:last-child { border-bottom: 0; }
+.miss-list b { color: var(--ink); font-weight: 500; }
+
+.promises { display: flex; flex-direction: column; gap: 1.5rem; max-width: 34rem; }
+.promise { display: grid; gap: .25rem; margin: 0; }
+.promise strong { font-weight: 600; letter-spacing: .02em; }
+.promise span { color: var(--muted); }
+
+.ask { display: flex; flex-direction: column; gap: 1.5rem; padding-top: 1rem; min-height: 22rem; }
+.ask .sub { margin: 0; color: var(--muted); max-width: 28rem; }
+.buttons { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; min-height: 4.5rem; }
+button { font: inherit; cursor: pointer; border-radius: 999px; padding: .85rem 1.8rem; border: 1px solid transparent; transition: transform .35s cubic-bezier(.3,1.4,.5,1), background .2s, color .2s; }
+button:focus-visible { outline: 3px solid var(--glow); outline-offset: 3px; }
+#yes { background: var(--rose); color: #2a0b17; font-weight: 600; font-size: 1.1rem; }
+#yes:hover { background: #f07a93; }
+#no { background: transparent; color: var(--muted); border-color: rgba(196,179,195,.45); }
+.hint { min-height: 1.75rem; margin: 0; color: var(--petal); font-size: .95rem; }
+
+.after { display: none; flex-direction: column; gap: 1.25rem; max-width: 34rem; }
+body.healed .after { display: flex; }
+body.healed .ask { display: none; }
+.after h2 { font-family: var(--font-display); font-style: italic; font-weight: 400; font-size: clamp(2.4rem, 9vw, 4rem); line-height: 1.05; margin: 0; }
+.after p { margin: 0; }
+.sign { font-family: var(--font-hand); font-size: clamp(3rem, 12vw, 4.5rem); line-height: 1; color: var(--glow); padding-top: .5rem; }
+
+@media (min-width: 760px) {
+  .hero { grid-template-columns: 1fr auto; gap: 2rem; }
+  .rose-wrap { width: 15rem; justify-self: end; }
+  .hero-text { padding-top: 4rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .dawn, .rose .head, .rose .glow, .rose .po, .rose .pi, .rose .pc, .rose .leaf, .rose .stem, .rose .fallen, button { transition: none; }
+  .hero-text > *, .music[aria-pressed="true"] i { animation: none; }
+}
+</style>
+
+<button class="music" id="music" type="button" aria-pressed="false"><i></i><span id="musicLabel">Play soft music</span></button>
+<div class="sky"></div>
+<div class="dawn"></div>
+<canvas id="fx" aria-hidden="true"></canvas>
+
+<main>
+  <header class="hero">
+    <div class="hero-text">
+      <p class="eyebrow">A letter, written on Saturday night</p>
+      <h1>Noor<span>,</span></h1>
+      <p class="lede">I am sorry. I know I hurt you, and I have not stopped thinking about it.</p>
+    </div>
+    <div class="rose-wrap">
+      <svg class="rose" viewBox="0 0 220 340" role="img" aria-label="A rose that has drooped, ready to bloom again">
+        <defs>
+          <radialGradient id="glowGrad" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#ffd9c0" stop-opacity=".9"></stop>
+            <stop offset="100%" stop-color="#ffd9c0" stop-opacity="0"></stop>
+          </radialGradient>
+        </defs>
+        <ellipse cx="110" cy="318" rx="62" ry="7" fill="#000" opacity=".25"></ellipse>
+        <path class="stem" d="M110 316 C 104 262, 118 214, 110 158" fill="none" stroke-width="5" stroke-linecap="round"></path>
+        <ellipse class="leaf" cx="84" cy="262" rx="26" ry="11" transform="rotate(-32 84 262)"></ellipse>
+        <ellipse class="leaf" cx="138" cy="232" rx="24" ry="10" transform="rotate(34 138 232)"></ellipse>
+        <g class="fallen" opacity=".9">
+          <ellipse cx="62" cy="312" rx="9" ry="5" fill="#7f4a60" transform="rotate(-20 62 312)"></ellipse>
+          <ellipse cx="160" cy="316" rx="8" ry="4.5" fill="#7f4a60" transform="rotate(24 160 316)"></ellipse>
+          <ellipse cx="128" cy="322" rx="7" ry="4" fill="#62384c" transform="rotate(8 128 322)"></ellipse>
+        </g>
+        <g class="head">
+          <circle class="glow" cx="110" cy="116" r="92" fill="url(#glowGrad)"></circle>
+          <g>
+            <ellipse class="po" cx="110" cy="90" rx="32" ry="40" transform="rotate(0 110 124)"></ellipse>
+            <ellipse class="po" cx="110" cy="90" rx="32" ry="40" transform="rotate(72 110 124)"></ellipse>
+            <ellipse class="po" cx="110" cy="90" rx="32" ry="40" transform="rotate(144 110 124)"></ellipse>
+            <ellipse class="po" cx="110" cy="90" rx="32" ry="40" transform="rotate(216 110 124)"></ellipse>
+            <ellipse class="po" cx="110" cy="90" rx="32" ry="40" transform="rotate(288 110 124)"></ellipse>
+            <ellipse class="pi" cx="110" cy="102" rx="22" ry="28" transform="rotate(36 110 124)"></ellipse>
+            <ellipse class="pi" cx="110" cy="102" rx="22" ry="28" transform="rotate(108 110 124)"></ellipse>
+            <ellipse class="pi" cx="110" cy="102" rx="22" ry="28" transform="rotate(180 110 124)"></ellipse>
+            <ellipse class="pi" cx="110" cy="102" rx="22" ry="28" transform="rotate(252 110 124)"></ellipse>
+            <ellipse class="pi" cx="110" cy="102" rx="22" ry="28" transform="rotate(324 110 124)"></ellipse>
+            <circle class="pc" cx="110" cy="124" r="14"></circle>
+            <path d="M104 124 C 104 116, 118 116, 117 125 C 116 132, 103 131, 105 122" fill="none" stroke="#000" stroke-opacity=".25" stroke-width="2"></path>
+          </g>
+        </g>
+      </svg>
+    </div>
+  </header>
+
+  <section class="letter" aria-label="Letter">
+    <p class="date">17 October 2026</p>
+    <p>I am not writing this to defend myself. There is no good reason for what I did, and I will not hide behind a bad one.</p>
+    <p>I was careless with something that is precious to me. I let my pride speak louder than my love. I did not listen when you needed me to, and I made you feel unseen. Of everything I have done, that is the part I regret most.</p>
+    <p class="pull">You never asked me to be perfect. You only asked me to be kind, and to be there.</p>
+    <p class="soft">The silence between us has been heavier than any argument. I keep picking up my phone to tell you something small, and then I remember. This page is the only way I could think of to say what I did not say well in person.</p>
+    <p>I am sorry for the words, for the moments I got wrong, and for every minute you spent upset because of me. You deserve better than that, and I want to be better.</p>
+  </section>
+
+  <section class="miss" aria-label="What I miss">
+    <h2>What I miss about us</h2>
+    <ul class="miss-list">
+      <li><b>Your voice.</b> The way it changes when you are happy, and the way it softens when you are tired.</li>
+      <li><b>Your laugh.</b> It can turn the worst day around, and I have not heard it nearly enough lately.</li>
+      <li><b>How you care.</b> You notice the small things. I should have noticed that more, and thanked you for it.</li>
+    </ul>
+  </section>
+
+  <section class="promises" aria-label="Promises">
+    <h2>What I promise you</h2>
+    <p class="promise"><strong>I will listen first.</strong><span>Before I answer, before I explain, I will hear what you are actually telling me.</span></p>
+    <p class="promise"><strong>I will say it when I am wrong.</strong><span>Quickly, and without making you wait or ask twice.</span></p>
+    <p class="promise"><strong>I will show up.</strong><span>On the good days and on the hard ones, and not only when it is easy.</span></p>
+  </section>
+
+  <section class="ask" id="ask" aria-label="Forgiveness">
+    <h2>Noor, will you forgive me?</h2>
+    <p class="sub">Take all the time you need. I will be here either way.</p>
+    <div class="buttons" id="buttons">
+      <button id="yes" type="button">Yes, I forgive you</button>
+      <button id="no" type="button">Not yet</button>
+    </div>
+    <p class="hint" id="hint" aria-live="polite"></p>
+  </section>
+
+  <section class="after" aria-live="polite">
+    <h2>Thank you, Noor.</h2>
+    <p>You just made me the happiest person in the world. I do not take your forgiveness lightly, and I will spend every day showing you that it was worth giving.</p>
+    <p>Come here. The first thing I want is to hold you and say it in person, and then a long evening that is only about you.</p>
+    <p class="sign">Yours, always</p>
+  </section>
+</main>
+
+<script>
+(function () {
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var canvas = document.getElementById('fx');
+  var ctx = canvas.getContext('2d');
+  var W = 0, H = 0, dpr = Math.min(window.devicePixelRatio || 1, 2);
+  var healed = false;
+  var starFade = 1;
+  var petals = [];
+  var stars = [];
+
+  function resize() {
+    W = window.innerWidth; H = window.innerHeight;
+    canvas.width = W * dpr; canvas.height = H * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    stars = [];
+    var n = Math.round(Math.min(90, (W * H) / 11000));
+    for (var i = 0; i < n; i++) {
+      stars.push({ x: Math.random() * W, y: Math.random() * H * 0.85, r: 0.4 + Math.random() * 1.3, t: Math.random() * 6.28, sp: 0.01 + Math.random() * 0.025 });
+    }
+  }
+  window.addEventListener('resize', resize);
+  resize();
+
+  function makePetal(fromTop) {
+    return {
+      x: Math.random() * W,
+      y: fromTop ? -20 - Math.random() * H * 0.3 : Math.random() * H,
+      s: 6 + Math.random() * 9,
+      vy: 0.25 + Math.random() * 0.45,
+      vx: -0.15 + Math.random() * 0.3,
+      r: Math.random() * Math.PI * 2,
+      vr: -0.012 + Math.random() * 0.024,
+      sway: Math.random() * Math.PI * 2,
+      a: 0.16 + Math.random() * 0.2
+    };
+  }
+  for (var i = 0; i < 30; i++) petals.push(makePetal(false));
+
+  function drawPetal(p) {
+    ctx.save();
+    ctx.translate(p.x, p.y);
+    ctx.rotate(p.r);
+    ctx.globalAlpha = p.a;
+    ctx.fillStyle = healed ? '#ffc2cf' : '#d98aa0';
+    ctx.beginPath();
+    ctx.ellipse(0, 0, p.s * 0.55, p.s, 0, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.restore();
+  }
+
+  function frame() {
+    ctx.clearRect(0, 0, W, H);
+    if (healed) starFade = Math.max(0, starFade - 0.008);
+    if (starFade > 0) {
+      for (var s = 0; s < stars.length; s++) {
+        var st = stars[s];
+        st.t += st.sp;
+        ctx.globalAlpha = (0.25 + 0.55 * Math.abs(Math.sin(st.t))) * starFade;
+        ctx.fillStyle = '#f6ecf0';
+        ctx.beginPath();
+        ctx.arc(st.x, st.y, st.r, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+    for (var i = 0; i < petals.length; i++) {
+      var p = petals[i];
+      p.sway += 0.012;
+      p.x += p.vx + Math.sin(p.sway) * 0.35;
+      p.y += p.vy * (healed ? 1.7 : 1);
+      p.r += p.vr;
+      if (p.y > H + 24 || p.x < -30 || p.x > W + 30) {
+        petals[i] = makePetal(true);
+        if (healed) { petals[i].a = 0.4 + Math.random() * 0.4; }
+        continue;
+      }
+      drawPetal(p);
+    }
+    if (!reduce) requestAnimationFrame(frame);
+  }
+  frame();
+
+  /* ---------- soft music (generated in the browser, starts only when asked) ---------- */
+  var audio = null, master = null, musicOn = false, timer = null, step = 0;
+  var sadLoop = [
+    [110.00, 164.81, 220.00, 261.63, 329.63],   /* A minor */
+    [87.31, 130.81, 174.61, 220.00, 261.63],    /* F */
+    [130.81, 196.00, 261.63, 329.63, 392.00],   /* C */
+    [98.00, 146.83, 196.00, 246.94, 293.66]     /* G */
+  ];
+  var happyLoop = [
+    [130.81, 196.00, 261.63, 329.63, 523.25],   /* C */
+    [98.00, 196.00, 246.94, 293.66, 392.00],    /* G */
+    [110.00, 220.00, 261.63, 329.63, 440.00],   /* A minor, lighter */
+    [87.31, 174.61, 220.00, 261.63, 349.23]     /* F */
+  ];
+
+  function note(freq, when, dur, vol) {
+    var o = audio.createOscillator();
+    var o2 = audio.createOscillator();
+    var g = audio.createGain();
+    o.type = 'sine'; o2.type = 'triangle';
+    o.frequency.value = freq; o2.frequency.value = freq * 2;
+    g.gain.setValueAtTime(0.0001, when);
+    g.gain.exponentialRampToValueAtTime(vol, when + 0.06);
+    g.gain.exponentialRampToValueAtTime(0.0001, when + dur);
+    var g2 = audio.createGain();
+    g2.gain.value = 0.25;
+    o.connect(g); o2.connect(g2); g2.connect(g); g.connect(master);
+    o.start(when); o2.start(when);
+    o.stop(when + dur + 0.1); o2.stop(when + dur + 0.1);
+  }
+
+  function playChord() {
+    if (!musicOn || !audio) return;
+    var loop = healed ? happyLoop : sadLoop;
+    var chord = loop[step % loop.length];
+    var t = audio.currentTime + 0.05;
+    for (var i = 0; i < chord.length; i++) {
+      note(chord[i], t + i * 0.42, healed ? 3.4 : 4.2, i === 0 ? 0.22 : 0.15);
+    }
+    step++;
+    timer = setTimeout(playChord, healed ? 3300 : 4300);
+  }
+
+  var btn = document.getElementById('music');
+  var label = document.getElementById('musicLabel');
+  btn.addEventListener('click', function () {
+    try {
+      if (!audio) {
+        var AC = window.AudioContext || window.webkitAudioContext;
+        if (!AC) { label.textContent = 'Music not supported'; return; }
+        audio = new AC();
+        master = audio.createGain();
+        master.gain.value = 0.16;
+        master.connect(audio.destination);
+      }
+      if (audio.state === 'suspended') audio.resume();
+    } catch (e) { label.textContent = 'Music not supported'; return; }
+    musicOn = !musicOn;
+    btn.setAttribute('aria-pressed', musicOn ? 'true' : 'false');
+    label.textContent = musicOn ? 'Music on' : 'Play soft music';
+    clearTimeout(timer);
+    if (musicOn) { step = 0; playChord(); }
+  });
+
+  /* ---------- forgiveness ---------- */
+  function celebrate() {
+    if (healed) return;
+    healed = true;
+    document.body.classList.add('healed');
+    for (var i = 0; i < 120; i++) {
+      var p = makePetal(true);
+      p.a = 0.45 + Math.random() * 0.4;
+      p.s = 7 + Math.random() * 11;
+      p.y = -Math.random() * H * 0.9;
+      petals.push(p);
+    }
+    for (var j = 0; j < petals.length; j++) petals[j].a = Math.min(0.85, petals[j].a + 0.2);
+    window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+    if (musicOn) { clearTimeout(timer); step = 0; playChord(); }
+    if (reduce) frame();
+  }
+
+  var yes = document.getElementById('yes');
+  var no = document.getElementById('no');
+  var hint = document.getElementById('hint');
+  var attempts = 0;
+  var lines = [
+    'Noor, please. I mean every word.',
+    'I will make it up to you, I promise.',
+    'You are the best thing in my life.',
+    'One more chance is all I am asking.'
+  ];
+
+  function dodge() {
+    attempts++;
+    if (attempts > lines.length) {
+      no.textContent = 'Okay... yes';
+      no.style.transform = 'translate(0px, 0px) scale(1)';
+      no.style.color = 'var(--ink)';
+      hint.textContent = 'I knew you could not stay angry at me for long.';
+      return;
+    }
+    hint.textContent = lines[attempts - 1];
+    var base = no.getBoundingClientRect();
+    var curX = 0, curY = 0;
+    var m = /translate\((-?[\d.]+)px,\s*(-?[\d.]+)px\)/.exec(no.style.transform);
+    if (m) { curX = parseFloat(m[1]); curY = parseFloat(m[2]); }
+    var homeX = base.left - curX, homeY = base.top - curY;
+    var scale = Math.max(0.55, 1 - attempts * 0.1);
+    for (var t = 0; t < 14; t++) {
+      var dx = (Math.random() - 0.5) * 220;
+      var dy = (Math.random() - 0.5) * 120;
+      var left = homeX + dx, top = homeY + dy;
+      if (left > 16 && left + base.width < W - 16 && top > 16 && top + base.height < H - 16) {
+        no.style.transform = 'translate(' + dx.toFixed(0) + 'px, ' + dy.toFixed(0) + 'px) scale(' + scale + ')';
+        break;
+      }
+    }
+    yes.style.transform = 'scale(' + (1 + attempts * 0.06) + ')';
+  }
+
+  no.addEventListener('click', function () {
+    if (attempts > lines.length) celebrate(); else dodge();
+  });
+  no.addEventListener('pointerenter', function (e) {
+    if (e.pointerType === 'mouse' && attempts <= lines.length) dodge();
+  });
+  yes.addEventListener('click', celebrate);
+})();
+</script>
+
+</body></html>
